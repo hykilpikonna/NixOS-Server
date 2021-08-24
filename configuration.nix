@@ -76,6 +76,7 @@
     sysstat
     nixpkgs-fmt
     python3
+    jdk11
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
