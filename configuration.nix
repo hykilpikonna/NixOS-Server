@@ -29,7 +29,7 @@
       enableACME = true;
       root = builtins.fetchGit {
         url = "https://github.com/HyDevelop/hydevelop.github.io";
-        ref = "master";
+        rev = "d5ef7e4d65422a6950cee9d63804cb436276d705";
       };
   };
   security.acme.email = "me@hydev.org";
@@ -77,6 +77,7 @@
     nixpkgs-fmt
     python3
     jdk11
+    update-nix-fetchgit
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
