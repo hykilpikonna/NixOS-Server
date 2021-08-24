@@ -4,6 +4,14 @@
 
 { config, pkgs, ... }:
 
+let
+  # Proxy Configs
+  hydev-proxy = builtins.fetchGit {
+      url = "https://github.com/hykilpikonna/HyDEV-Proxy";
+      rev = "44ce953a786f32e8e58038bf3561852b196c0014";
+  };
+
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -11,10 +19,10 @@
       ./home-manager.nix
     ];
 
-  boot = {
-    kernelModules = [ "tcp_bbr" ];
-    kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
-  };
+  # boot = {
+  #   kernelModules = [ "tcp_bbr" ];
+  #   kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
+  # };
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -41,11 +49,10 @@
   security.acme.acceptTerms = true;
 
   # V2Ray
+
   services.v2ray = {
       enable = true;
-      configFile = builtins.fetchurl {
-          url = "https://gist.githubusercontent.com/hykilpikonna/b490377c22f92c9013ec31a1df2b40fb/raw/db4fbc1cccea0e5d571bdef4eb9ded042e2f7098/v2ray.config.json";
-      };
+      configFile = "${hydev-proxy}/v2ray-server.json";
   };
 
   # Nano
