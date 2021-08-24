@@ -7,7 +7,7 @@
 let
   # Proxy Configs
   hydev-proxy = builtins.fetchGit {
-      url = "https://github.com/hykilpikonna/HyDEV-Proxy";
+      url = "git@github.com:hykilpikonna/HyDEV-Proxy.git";
       rev = "44ce953a786f32e8e58038bf3561852b196c0014";
   };
 
