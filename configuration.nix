@@ -11,6 +11,11 @@
       ./home-manager.nix
     ];
 
+  boot = {
+    kernelModules = [ "tcp_bbr" ];
+    kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
+  };
+
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
