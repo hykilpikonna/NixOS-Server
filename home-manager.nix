@@ -6,7 +6,7 @@ let
   };
   hydev-server-setup = builtins.fetchGit {
     url = "https://github.com/hykilpikonna/HyServerSetup.git";
-    rev = "20309261d4208caebb13ede1953090670e215624";
+    rev = "b3fdab43d10f20a627b4583923c67ba1e47e7864";
   };
 in
 {
