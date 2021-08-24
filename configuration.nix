@@ -42,7 +42,12 @@
           url = "https://gist.githubusercontent.com/hykilpikonna/b490377c22f92c9013ec31a1df2b40fb/raw/db4fbc1cccea0e5d571bdef4eb9ded042e2f7098/v2ray.config.json";
       };
   };
-
+  
+  # Nano
+  programs.nano.nanorc = ''
+      set tabstospaces
+      set tabsize 2
+  '';
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
