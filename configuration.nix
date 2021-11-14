@@ -73,16 +73,6 @@ in
       bind ^r replace main
   '';
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.jane = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  # };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -96,29 +86,11 @@ in
     update-nix-fetchgit
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 80 8080 7890 ];
-  networking.firewall.allowedUDPPorts = [ 80 8080 7890 ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.05"; # Did you read the comment?
+  networking.firewall = {
+    allowedTCPPorts = [ 80 8080 7890 ];
+    allowedUDPPorts = [ 80 8080 7890 ];
+  };
 
   # SSH
   services.openssh = {
@@ -130,4 +102,30 @@ in
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAoms8qirQCt8InWouj6bMph20c22bh7qOxM7OeUiqW3fKdPU1/2MSkqmlcbvm2VM5dyXnZMUEGg6CWaF/kw2WYQzWPu10KpCATtnxqc6/BI5St5P2rEky6AXgcm1YcdxHe3dh13Oa5EK8L80t+AJ7JEYpLQy4gm/ZtDxXL0k7VEGT3pGDG3keBxnq0mvnDOiMKFQ7zSCHEsNseZj56U5l1z1JYBqrGA0yelWja3u0DrYC3BRBlcbaOxOX3UdrXZCVN6sXTQ3X38ZhEoiZ1ihDAxJ/doECKcL5GmkjGspyxr8mHEG0uI173lmH7cCYkOiyg7WVU7y2rM7MHkYVuL8yPRWy4gGdRWCjfkj40pvQeq0QAuTr5MfA/xwQXjJSBEkPdSpf60QvZOMnUFCwSSVHjvBDghKaO+x0z9GZrJzQ5lTHmyvj1NmawAh+Gkkd7kFyLmFuXAKkpuR/b+WaROcI7c6m9bfXuAVEz8XI4yrhpaINS7GhwIflzbh2hcXHfTU= neko@hydev.org"
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9Hp++ifga/cOBryqxAUjZ0V7gagz4JATPCcbvHTLrgW8C5cO3FICcd1xaMd/Vmn11/Hjbetfh5Hl8agHmWLuxjNr2xe+j9JBqdGuEQVQKkZd1PZ7hFr3LDOgDCEymEI8L8FLler8U5OXENeGFzZ1BkaOsLbjBCgJYy91TcU1Z9rZtbpnMiaOMwRYkg212QzW+C46OY1Luxdd2cjxGPGuEkh8XML2Gxz/Hp4IPB3K6JHarXZ5uM+x+HX5ZuQl9JTeVCezBkiE4jAjWmOIDbEs0Yf3iFyw19vq73Wk5CdKUjA0bjAiAG9BUBcpjH+6K3GMdBtxwmiY8P7B0VgVf7H883k/xXgPZi4DssBiToP4jkaMO3JKpyd91zK6z8LFEMezyPWrU9bzrxePvxFbU3Y6QQjACHjpaS7nrVk/9BZZBqp7GZSMJG9opHY1f3EZM03UsiB3ObB8VIq/ZyGFy4jmUOQUYj69pjEDXHeNxmPVmq21Fzfo+qL71lcdAwtroGVc= me@KEVIN-PC"
   ];
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "21.05";
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # users.users.jane = {
+  #   isNormalUser = true;
+  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  # };
 }
