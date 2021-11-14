@@ -21,12 +21,6 @@ mv -f temp/* nixos/
 
 cp /home/nixos/.ssh/authorized_keys /mnt/etc/nixos/key.pub
 
-ssh-keygen
-cat /root/.ssh/id_rsa.pub
-
-echo "Copy public key to your github account."
-read -p "Press enter to continue"
-
 nix-shell -p git --run 'nixos-install --no-root-passwd'
 
 echo "Done!"
