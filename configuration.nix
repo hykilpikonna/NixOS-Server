@@ -41,14 +41,24 @@ in
   networking.hostName = "HyDEV-Nix";
 
   # Nginx
-  services.nginx.enable = true;
-  services.nginx.virtualHosts."nix.hydev.org" = {
+  services.nginx = {
+    enable = true;
+    virtualHosts."nix.hydev.org" = {
       addSSL = true;
       enableACME = true;
       root = builtins.fetchGit {
         url = "https://github.com/HyDevelop/hydevelop.github.io";
         rev = "d5ef7e4d65422a6950cee9d63804cb436276d705";
       };
+    };
+    virtualHosts."backend.one-among.us" = {
+      addSSL = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass = "http://localhost:43482";
+      };
+
+    };
   };
   security.acme.email = "me@hydev.org";
   security.acme.acceptTerms = true;
@@ -64,12 +74,14 @@ in
   };
 
   # Docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+  };
 
   # V2Ray
   services.v2ray = {
-      enable = true;
-      configFile = "${hydev-proxy}/v2ray-server.json";
+    enable = true;
+    configFile = "${hydev-proxy}/v2ray-server.json";
   };
 
   # Nano
