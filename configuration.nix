@@ -17,7 +17,10 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./home-manager.nix
+      (fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master")
     ];
+
+  services.vscode-server.enable = true;
 
   # boot = {
   #   kernelModules = [ "tcp_bbr" ];
@@ -51,7 +54,6 @@ in
   security.acme.acceptTerms = true;
 
   # V2Ray
-
   services.v2ray = {
       enable = true;
       configFile = "${hydev-proxy}/v2ray-server.json";
@@ -118,6 +120,7 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
 
+  # SSH
   services.openssh = {
     enable = true;
   };
