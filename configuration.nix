@@ -33,6 +33,7 @@ in
   networking.usePredictableInterfaceNames = false;
   networking.useDHCP = false;
   networking.interfaces.eth0.useDHCP = true;
+  networking.interfaces.enp1s0.useDHCP = true;
   networking.hostName = "HyDEV-Nix";
 
   # Nginx
