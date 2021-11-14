@@ -57,6 +57,9 @@ in
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
+    initialScript = pkgs.writeScriptBin "temp.sql" ''
+      GRANT ALL PRIVILEGES ON *.* TO 'root'@'99.229.208.50' IDENTIFIED BY 'qwq' WITH GRANT OPTION;
+    '';
   };
 
   # V2Ray
@@ -94,7 +97,7 @@ in
 
   # Open ports in the firewall.
   networking.firewall = {
-    allowedTCPPorts = [ 80 8080 7890 ];
+    allowedTCPPorts = [ 80 8080 7890 3306 ];
     allowedUDPPorts = [ 80 8080 7890 ];
   };
 
