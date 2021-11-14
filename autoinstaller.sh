@@ -4,9 +4,9 @@ curl -L https://github.com/Hykilpikonna.keys >~/.ssh/authorized_keys
 
 sudo -s
 
-parted /dev/vda -s mklabel msdos
-parted /dev/vda -s mkpart primary 1MiB -1GiB
-parted /dev/vda -s mkpart primary linux-swap -1GiB 100%
+parted /dev/vda -s 'mklabel msdos'
+parted /dev/vda -s 'mkpart primary 1MiB -1GiB'
+parted /dev/vda -s 'mkpart primary linux-swap -1GiB 100%'
 
 mkfs.btrfs -L root /dev/vda1
 mkswap -L swap /dev/vda2
