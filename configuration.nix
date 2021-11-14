@@ -63,6 +63,9 @@ in
     ensureDatabases = ["memories"];
   };
 
+  # Docker
+  virtualisation.docker.enable = true;
+
   # V2Ray
   services.v2ray = {
       enable = true;
