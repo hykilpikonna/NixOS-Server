@@ -53,6 +53,12 @@ in
   security.acme.email = "me@hydev.org";
   security.acme.acceptTerms = true;
 
+  # MariaDB
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+  };
+
   # V2Ray
   services.v2ray = {
       enable = true;
