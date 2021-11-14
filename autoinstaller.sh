@@ -14,11 +14,10 @@ swapon /dev/vda2
 mount /dev/disk/by-label/root /mnt
 
 nixos-generate-config --root /mnt
-rm -rf /mnt/etc/nixos/configuration.nix
 cd /mnt/etc
 nix-shell -p git --run 'git clone https://github.com/hykilpikonna/NixOS-Server.git temp'
 rm -rf temp/hardware-configuration.nix
-mv temp/* nixos/
+mv -f temp/* nixos/
 
 cp /home/nixos/.ssh/authorized_keys /mnt/etc/nixos/key.pub
 
