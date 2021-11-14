@@ -60,6 +60,7 @@ in
     initialScript = pkgs.writeScriptBin "temp.sql" ''
       GRANT ALL PRIVILEGES ON *.* TO 'root'@'99.229.208.50' IDENTIFIED BY 'qwq' WITH GRANT OPTION;
     '';
+    ensureDatabases = ["memories"];
   };
 
   # V2Ray
