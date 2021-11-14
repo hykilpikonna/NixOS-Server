@@ -32,8 +32,5 @@ in
       	source "$SCR/bashrc-nix.sh"
       '';
     };
-
-    # SSH
-    home.file.".ssh/id_rsa.pub".text = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCy3+c09vunThjhW4tHJyNP9chQh0SKt6Ot3g3d2YpKbJhT6eKCY5vDXUVPrEYJkNt4LoOTemsG6gysGl5ulK5biRSqCb4wPa5qWUNbJ7Q8tEGoRPo6n3mNndYXII2QZBnyF+MiwE/VUG3gab+PUGl19olD5bOqwjwKMR0EPV6rlhZasOpNFmZu2qVknPH8BP626gfQzQ6/KQc9/98KOO2bFBNTXJVaPaHsQjT+jFU7zuVzQYjWQMORv+Zg3W6cAm8TTVOC51qlA/zhgisd0r8aUNUCk3ApycTZ/ImIxXqKev5amTVYbExjsu0xl3orvKUx+Pd6T3avOZJbF2Q1vQvAz608vn0a9H/C6aafa0Mrly6tVDB6Tj+ujoIsh7dsyTr7n0J6HZLlpK1KAM0ryJIDUiUKfHFCB0uFIjAvVAJu2thtB8ag7BLP6qsE6+BnCFsgSeCipmCk1HEsMCyvLcP9O2oHai3ErraC7LusnNeKwmc5PBqOpSG/oSMJtPqUE6U= me@hydev.org";
   };
 }
