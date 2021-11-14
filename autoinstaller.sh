@@ -14,9 +14,11 @@ swapon /dev/vda2
 mount /dev/disk/by-label/root /mnt
 
 nixos-generate-config --root /mnt
-rm -rf /mnt/etc/nixos
+rm -rf /mnt/etc/nixos/configuration.nix
 cd /mnt/etc
-nix-shell -p git --run 'git clone https://github.com/hykilpikonna/NixOS-Server.git nixos'
+nix-shell -p git --run 'git clone https://github.com/hykilpikonna/NixOS-Server.git temp'
+rm -rf temp/hardware-configuration.nix
+mv temp/* nixos/
 
 cp /home/nixos/.ssh/authorized_keys /mnt/etc/nixos/key.pub
 
@@ -26,7 +28,7 @@ cat /root/.ssh/id_rsa.pub
 echo "Copy public key to your github account."
 read -p "Press enter to continue"
 
-nixos-install --no-root-passwd
+nix-shell -p git --run 'nixos-install --no-root-passwd'
 
 echo "Done!"
 echo "Please shut down and remove installer iso."
