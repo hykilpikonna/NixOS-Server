@@ -148,9 +148,18 @@ in
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.jane = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  # };
+  # Zsh
+  programs.zsh = {
+    enable = true;
+    shellInit = ''
+      SCR="$HOME/zshrc/scripts"
+      . $SCR/zshrc.sh
+    '';
+    promptInit = "";
+  };
+  users.users.root = {
+    # Zsh
+    shell = pkgs.zsh;
+    # extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  };
 }
