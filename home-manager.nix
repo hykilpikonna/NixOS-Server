@@ -6,7 +6,7 @@ let
   };
   hydev-server-setup = builtins.fetchGit {
     url = "https://github.com/hykilpikonna/zshrc.git";
-    rev = "b3fdab43d10f20a627b4583923c67ba1e47e7864";
+    rev = "3e71f7f6e2252904b64ade8ea29a3e44de640f15";
   };
 in
 {

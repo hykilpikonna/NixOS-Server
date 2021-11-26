@@ -8,7 +8,7 @@ let
   # Proxy Configs
   hydev-proxy = builtins.fetchGit {
       url = "https://github.com/hykilpikonna/HyDEV-Proxy.git";
-      rev = "44ce953a786f32e8e58038bf3561852b196c0014";
+      rev = "7182862a12aaef35a6c9a2def04f43e315417c79";
   };
 
 in
@@ -48,7 +48,7 @@ in
       enableACME = true;
       root = builtins.fetchGit {
         url = "https://github.com/HyDevelop/hydevelop.github.io";
-        rev = "d5ef7e4d65422a6950cee9d63804cb436276d705";
+        rev = "d6b7eb637ada373142e48e5153dc57e22a02e94b";
       };
     };
     virtualHosts."backend.one-among.us" = {
