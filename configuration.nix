@@ -84,6 +84,12 @@ in
     configFile = "${hydev-proxy}/v2ray-server.json";
   };
 
+  # Shadowsocks
+  services.shadowsocks = {
+    enable = true;
+    extraConfig = builtins.readFile("${hydev-proxy}/ss-server.json");
+  };
+
   # Nano
   programs.nano.nanorc = ''
       set tabstospaces
