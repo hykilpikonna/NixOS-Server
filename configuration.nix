@@ -22,10 +22,10 @@ in
 
   services.vscode-server.enable = true;
 
-  # boot = {
-  #   kernelModules = [ "tcp_bbr" ];
-  #   kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
-  # };
+  boot = {
+    kernelModules = [ "tcp_bbr" ];
+    kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
+  };
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -57,7 +57,6 @@ in
       locations."/" = {
         proxyPass = "http://localhost:43482";
       };
-
     };
   };
   security.acme.email = "me@hydev.org";
@@ -87,7 +86,9 @@ in
   # Shadowsocks
   services.shadowsocks = {
     enable = true;
-    extraConfig = builtins.readFile("${hydev-proxy}/ss-server.json");
+    port = 14783;
+    password = "8c80d838-253c-41df-afda-d0f04a2c0873";
+    encryptionMethod = "chacha20-ietf-poly1305";
   };
 
   # Nano
@@ -119,8 +120,8 @@ in
 
   # Open ports in the firewall.
   networking.firewall = {
-    allowedTCPPorts = [ 80 8080 7890 3306 ];
-    allowedUDPPorts = [ 80 8080 7890 ];
+    allowedTCPPorts = [ 80 8080 7890 14783 3306 ];
+    allowedUDPPorts = [ 80 8080 7890 14783 ];
   };
 
   # SSH
