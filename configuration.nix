@@ -56,6 +56,9 @@ in
       enableACME = true;
       locations."/" = {
         proxyPass = "http://localhost:43482";
+        extraConfig = "
+set_real_ip_from 0.0.0.0/0;
+real_ip_header CF-Connecting-IP;";
       };
     };
   };
